@@ -2,8 +2,8 @@ import sqlite3
 from sqlite3 import Error
 from pathlib import Path
 
-current_path = Path.cwd()
-database = str((current_path) / "test.db")
+# current_path = Path.cwd()
+# database = current_path / "test.db"
 #database = r"C:\FIAE\Python\Project1Chat\test.db" # TODO adjust, maybe we can make this address calculated by current folder ?
 
 def create_connection(db_file):
@@ -21,15 +21,27 @@ def create_connection(db_file):
     return conn
 
 def create_account(new_user, new_password):
+    current_path = Path.cwd()
+    database = current_path / "test.db"
+
+    conn = create_connection(database)
+
     try:
         c = conn.cursor()
         new_account_sql = f"INSERT INTO User (Nickname, Password) VALUES ('{new_user}','{new_password}');"
         c.execute(new_account_sql)
         conn.commit()
         new_user_confirmation = select_table('user', 'Nickname',filter_results_by_WHERE('Nickname',new_user))[0][0] # checks for the new entry
-        print("New User "+ new_user_confirmation + " created") 
+        #print("New User "+ new_user_confirmation + " created") 
     except Error as e:
         print(e)
+
+    conn.close()
+
+    if new_user_confirmation != None:
+        return new_user_confirmation
+    else:
+        return False
 
 def select_table(table, column = '*', WHERE = ''): # default column is * | default WHERE statement is '' = empty
     try:
@@ -45,12 +57,12 @@ def filter_results_by_WHERE(table, new_user): #If needed overwrite the default W
     where_string_sql = f"WHERE {table} = '{new_user}'"
     return where_string_sql
 
-conn = create_connection(database)
-new_user = input('Username: ')
-new_password = input('Password: ')
-create_account(new_user,new_password)
-print("\n" + 70 * "_"  + "\n\n"+ 25 * " " + "USER TABLE\n" + 70 * "_"+"\n") # Fat Line
-sql_return = select_table('User') # Printing the whole table
-for elem in sql_return:
-    print(elem)
-conn.close()
+#conn = create_connection(database)
+# new_user = input('Username: ')
+# new_password = input('Password: ')
+#create_account(new_user,new_password)
+# print("\n" + 70 * "_"  + "\n\n"+ 25 * " " + "USER TABLE\n" + 70 * "_"+"\n") # Fat Line
+# sql_return = select_table('User') # Printing the whole table
+# for elem in sql_return:
+#     print(elem)
+#conn.close()

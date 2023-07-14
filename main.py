@@ -4,6 +4,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
 from kivy.metrics import dp
 import login_001 as lg
+import new_account_P1_C as na
 
 current_user        = None
 current_user_pw     = None
