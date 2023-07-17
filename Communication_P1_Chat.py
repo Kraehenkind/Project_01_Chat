@@ -111,3 +111,5 @@ def close_connection():
     conn.close()
 
 conn = create_connection(database_path)
+
+print(user_login("Bob","13"))
