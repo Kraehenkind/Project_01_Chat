@@ -11,61 +11,61 @@ Manager:
 
 <LogInScreen>:
     GridLayout:
-        id:     basegrid
-        rows:   2
+        id: basegrid
+        rows: 2
         canvas.before:
             Rectangle:
-                pos:    self.pos
-                size:   self.size
+                pos: self.pos
+                size: self.size
                 source: r"Ressources\blue-background.jpg"
         BoxLayout:
-            id:          textfields
-            size_hint:   1, .8
+            id: textfields
+            size_hint: 1, .8
             orientation: "vertical"
             
             Label:
-                id:     oben
-                text:   "Hier Username eintragen"
+                id: oben
+                text: "Hier Username eintragen"
                 valign: "bottom"
                 
             UserText:
-                id:     user_text
+                id: user_text
                 
             Label:
-                id:     mitte
-                text:   "Hier Passwort angeben"
+                id: mitte
+                text: "Hier Passwort angeben"
                 valign: "bottom"
                 
             UserPW:
-                id:     user_pw
+                id: user_pw
                 
             Label:
-                id:     unten
+                id: unten
     
         GridLayout:
-            id:     buttonfield
-            rows:   1
-            cols:   5
+            id: buttonfield
+            rows: 1
+            cols: 5
             size_hint: 1, .2
             
             Label:
                 id: buttonfield_padding_left
             
             Button:
-                id:         sendlogin
-                size_hint:  None, None
-                size:       dp(150), dp(50)
-                text:       "Send"
-                on_press:   root.validate_login()
+                id: sendlogin
+                size_hint: None, None
+                size: dp(150), dp(50)
+                text: "Send"
+                on_press: root.validate_login()
             
             Label:
                 id: buttonfield_padding_mid
             
             Button:
-                id:         newaccount
-                size_hint:  None, None
-                size:       dp(150), dp(50)
-                text:       "New User"
+                id: newaccount
+                size_hint: None, None
+                size: dp(150), dp(50)
+                text: "New User"
                 #on_press: root.validate_login()
             
             Label:
@@ -102,42 +102,42 @@ Manager:
 
 <ScrollChat@ScrollView>:
     Label:
-        id:         left_label
-        size_hint_y:None
-        height:     self.texture_size[1]
-        text_size:  self.width, None #none for scrolling!
-        text:       "probieren wir weiter"
-        halign:     "left"
-        valign:     "top"
-        padding:    5, 5, 5, 5
+        id: left_label
+        size_hint_y: None
+        height: self.texture_size[1]
+        text_size: self.width, None #none for scrolling!
+        text: "probieren wir weiter"
+        halign: "left"
+        valign: "top"
+        padding: 5, 5, 5, 5
         
 <LeftColumn>:
     orientation: "vertical"
-    size_hint:   1.5 , 1
-    padding:     0, 5, 0, 0
+    size_hint: 1.5 , 1
+    padding: 0, 5, 0, 0
     ScrollChat:
-        id:         ScrollChat
-        size_hint:  1, .75
+        id: ScrollChat
+        size_hint: 1, .75
     TextInput:
-        id:             chat_input
-        size_hint:      1, .25
-        hint_text:      "Hier Nachricht eingeben"
+        id: chat_input
+        size_hint: 1, .25
+        hint_text: "Hier Nachricht eingeben"
         text_validate_unfocus: False        
-        multiline:      False
+        multiline: False
         on_text_validate: root.parent.parent.ids.right_column.testChat()
 
 <RightColumn>:
     orientation: "vertical"
-    size_hint:   .5 , 1
+    size_hint: .5 , 1
     Label:
-        id:         right_label
-        text:       "Label für Info etc."
-        size_hint:  1, .85
+        id: right_label
+        text: "Label für Info etc."
+        size_hint: 1, .85
     Button:
-        id:         send_button
-        text:       "Senden Button"
-        on_press:   root.testChat()
-        size_hint:  1, .10
+        id: send_button
+        text: "Senden Button"
+        on_press: root.testChat()
+        size_hint: 1, .10
 
 # Elements for LoginScreen:
 # Design musst still be updated/done better
@@ -146,37 +146,37 @@ Manager:
     BoxLayout:
         orientation: "horizontal"
         Label:
-            id:         left-padding
-            size_hint:  .3, None
+            id: left-padding
+            size_hint: .3, None
         TextInput:
-            id:         username
-            multiline:  False
-            hint_text:  "Username"
-            size_hint:  1, None
-            height:     self.minimum_height
-            padding:    10,10,10,10
-            write_tab:  False
+            id: username
+            multiline: False
+            hint_text: "Username"
+            size_hint: 1, None
+            height: self.minimum_height
+            padding: 10,10,10,10
+            write_tab: False
         Label:
-            id:         right-padding
-            size_hint:  .3, None
+            id: right-padding
+            size_hint: .3, None
 
 
 <UserPW@BoxLayout>:
     BoxLayout:
         orientation: "horizontal"
         Label:
-            id:         pw-padding
-            size_hint:  .3, 1
+            id: pw-padding
+            size_hint: .3, 1
         TextInput:
-            id:         passwort
-            multiline:  False
-            password:   True
-            hint_text:  "Passwort"
-            size_hint:  1, None
-            height:     self.minimum_height
-            padding:    10,10,10,10
-            write_tab:  False
+            id: passwort
+            multiline: False
+            password: True
+            hint_text: "Passwort"
+            size_hint: 1, None
+            height: self.minimum_height
+            padding: 10,10,10,10
+            write_tab: False
             on_text_validate: root.parent.parent.parent.validate_login()
         Label:
-            id:         pw-padding
-            size_hint:  .3, 1
+            id: pw-padding
+            size_hint: .3, 1
