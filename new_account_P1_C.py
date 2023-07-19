@@ -46,11 +46,11 @@ def filter_results_by_WHERE(table, new_user): #If needed overwrite the default W
     return where_string_sql
 
 conn = create_connection(database)
-new_user = input('Username: ')
-new_password = input('Password: ')
-create_account(new_user,new_password)
-print("\n" + 70 * "_"  + "\n\n"+ 25 * " " + "USER TABLE\n" + 70 * "_"+"\n") # Fat Line
-sql_return = select_table('User') # Printing the whole table
-for elem in sql_return:
-    print(elem)
+# new_user = input('Username: ')
+# new_password = input('Password: ')
+# create_account(new_user,new_password)
+# print("\n" + 70 * "_"  + "\n\n"+ 25 * " " + "USER TABLE\n" + 70 * "_"+"\n") # Fat Line
+# sql_return = select_table('User') # Printing the whole table
+# for elem in sql_return:
+#     print(elem)
 conn.close()

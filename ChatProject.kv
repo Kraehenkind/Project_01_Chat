@@ -1,5 +1,9 @@
-#:kivy 1.0
+#:kivy 2.2.1
 Manager:
+
+#:import Factory kivy.factory.Factory
+#:set font_used r"Ressources\LibreBaskerville-Regular.ttf"
+#:set background_image r"Ressources\smoldering-roses.jpg"
 
 #Screenmanager and the defined Screens so far:
 
@@ -17,31 +21,29 @@ Manager:
             Rectangle:
                 pos: self.pos
                 size: self.size
-                source: r"Ressources\blue-background.jpg"
+                source: background_image
         BoxLayout:
             size_hint: 1, .8
             id: textfields
             orientation: "vertical"
-            
             Label:
                 id: oben
                 text: "Hier Username eintragen"
+                font_name: font_used
+                font_size: 28
                 valign: "bottom"
-                
             UserText:
                 id: user_text
-                
             Label:
                 id: mitte
                 text: "Hier Passwort angeben"
+                font_name: font_used
+                font_size: 28
                 valign: "bottom"
-                
             UserPW:
                 id: user_pw
-                
             Label:
                 id: unten
-    
         GridLayout:
             id: buttonfield
             rows: 1
@@ -49,24 +51,20 @@ Manager:
             size_hint: 1, .2
             Label:
                 id: buttonfield_padding_left
-            
             Button:
                 id: sendlogin
                 size_hint: None, None
                 size: dp(150), dp(50)
                 text: "Send"
-                on_press: root.validate_login()
-            
+                on_press: root.validate_login(self.ids.user_text.ids.username.text, self.ids.user_pw.ids.passwort.text)
             Label:
                 id:buttonfield_padding_mid
-            
             Button:
                 id: newaccount
                 size_hint: None, None
                 size: dp(150), dp(50)
                 text: "New User"
-                on_press: root.validate_login()
-            
+                on_press: Factory.TestPopUp().open()
             Label:
                 id:buttonfield_padding_right
 
@@ -78,7 +76,7 @@ Manager:
             Rectangle:
                 pos: self.pos
                 size: self.size
-                source: r"Ressources\blue-background.jpg"
+                source: background_image
         canvas:
             Color:
                 rgba: 0, 0, 0, .6
@@ -88,16 +86,14 @@ Manager:
             Line:
                 points: (0, self.height/4, self.width, self.height/4)
                 width: 2
-        
         LeftColumn:
             id: left_column
-            
         RightColumn:
             id: right_column
 
 # Elements for the ChatScreen: 
 # Left and Right Column, ScrollChat for Chatdisplaylabel
-# Design musst still be updated/done better
+# Design must still be updated/done better
 
 <ScrollChat@ScrollView>:
     Label:
@@ -139,7 +135,7 @@ Manager:
         size_hint: 1, .10
 
 # Elements for LoginScreen:
-# Design musst still be updated/done better
+# Design must still be updated/done better
 
 <UserText@BoxLayout>:
     BoxLayout:
@@ -179,3 +175,13 @@ Manager:
         Label:
             id: pw-padding
             size_hint: .3, 1
+
+<TestPopUp@Popup>:
+    auto_dismiss: False
+    BoxLayout:
+        Label:
+            id: PopUpLabel
+        Button:
+            text: "TestPopUp"
+            on_release: root.dismiss()
+    
