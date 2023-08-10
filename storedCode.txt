@@ -1,0 +1,93 @@
+Test for PopUp Window (failed, reason unknwon!)
+
+#:import Factory kivy.factory.Factory
+<NewAccount@Popup>:
+    auto_dismiss : False
+    InsertNewUser:
+
+<InsertNewUser@BoxLayout>:
+    GridLayout:
+        id: newUserGrid
+        rows: 2
+        canvas.before:
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: r"Ressources\blue-background.jpg"
+        BoxLayout:
+            size_hint: 1, .8
+            id: newUserInput
+            orientation: "vertical"
+            Label:
+                id: oben
+                text: "Hier Username eintragen"
+                valign: "bottom"
+            NewUserID:
+                id: newUserID
+            Label:
+                id: mitte
+                text: "Hier Passwort angeben"
+                valign: "bottom"
+            NewUserPW:
+                id: newUserPW
+            Label:
+                id: unten
+        GridLayout:
+            id: subscribeButton
+            rows: 1
+            cols: 5
+            size_hint: 1, .2
+            Label:
+                id: subscribeButton_padding_left
+            Button:
+                id: createAccount
+                size_hint: None, None
+                size: dp(150), dp(50)
+                text: "Create Account"
+                on_press: root.validate_login()
+            Label:
+                id: subscribeButton_padding_mid
+            Button:
+                id: returnToLogin
+                size_hint: None, None
+                size: dp(150), dp(50)
+                text: "Return to Login"
+                on_press: root.dismiss()
+            Label:
+                id:buttonfield_padding_right
+
+<NewUserID@BoxLayout>:
+    BoxLayout:
+            orientation: "horizontal"
+            Label:
+                id: newUserLeft-padding
+                size_hint: .3, None
+            TextInput:
+                id: newUserName
+                multiline: False
+                hint_text: "Username"
+                size_hint: 1, None
+                height: self.minimum_height
+                padding: 10,10,10,10
+                write_tab: False
+            Label:
+                id: newUserRight-padding
+                size_hint: .3, None
+
+<NewUserPW@BoxLayout>:
+    BoxLayout:
+            orientation: "horizontal"
+            Label:
+                id: newPWLeft-padding
+                size_hint: .3, None
+            TextInput:
+                id: newUserPassword
+                multiline: False
+                hint_text: "Password"
+                size_hint: 1, None
+                height: self.minimum_height
+                padding: 10,10,10,10
+                write_tab: False
+            Label:
+                id: newPWRight-padding
+                size_hint: .3, None
