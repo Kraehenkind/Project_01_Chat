@@ -96,9 +96,15 @@ Manager:
         RightColumn:
             id: right_column
 
+<<<<<<< Updated upstream
 # Elements for the ChatScreen: 
 # Left and Right Column, ScrollChat for Chatdisplaylabel
 # Design musst still be updated/done better
+=======
+#Elements for the ChatScreen: 
+#Left and Right Column, ScrollChat for Chatdisplaylabel
+#Design must still be updated/done better
+>>>>>>> Stashed changes
 
 <ScrollChat@ScrollView>:
     Label:
@@ -139,8 +145,14 @@ Manager:
         on_press: root.testChat()
         size_hint: 1, .10
 
+<<<<<<< Updated upstream
 # Elements for LoginScreen:
 # Design musst still be updated/done better
+=======
+
+#Elements for LoginScreen:
+#Design must still be updated/done better
+>>>>>>> Stashed changes
 
 <UserText@BoxLayout>:
     BoxLayout:
@@ -179,4 +191,21 @@ Manager:
             on_text_validate: root.parent.parent.parent.validate_login()
         Label:
             id: pw-padding
+<<<<<<< Updated upstream
             size_hint: .3, 1
+=======
+            size_hint: .3, 1
+
+<TestPopUp@Popup>:
+    auto_dismiss: False
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            sizehint: 1, .75
+            id: PopUpLabel
+        Button:
+            sizehint: 1, .25
+            text: "TestPopUp"
+            on_release: root.dismiss()
+    
+>>>>>>> Stashed changes
